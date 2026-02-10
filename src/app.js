@@ -17,8 +17,6 @@ function generateCard() {
   const suit = getRandomItem(suits);
   const value = getRandomItem(values);
   const color = (suit === "♥" || suit === "♦") ? "red" : "black";
-
-  
   
   document.getElementById("top-suit").textContent = suit;
   document.getElementById("bottom-suit").textContent = suit;
@@ -28,7 +26,28 @@ function generateCard() {
   const card = document.getElementById("card");
   card.classList.remove("red", "black");
   card.classList.add(color);
+
+  setInterval(generateCard, 10000);
+  
 }
+const widthInput = document.getElementById("widthInput");
+const heightInput = document.getElementById("heightInput");
+const card = document.getElementById("card");
+const button = document.getElementById("applySize");
+
+button.addEventListener("click", () => {
+  const width = widthInput.value;
+  const height = heightInput.value;
+
+  if (width) {
+    card.style.width = width;
+  }
+
+  if (height) {
+    card.style.height = height;
+  }
+});
+
 
 document.getElementById("generate").addEventListener("click", generateCard);
 
